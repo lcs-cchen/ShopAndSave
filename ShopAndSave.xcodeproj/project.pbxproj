@@ -11,6 +11,7 @@
 		6EE24C6C2A291D09008F9DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EE24C6B2A291D09008F9DD2 /* Assets.xcassets */; };
 		6EE24C6F2A291D09008F9DD2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EE24C6E2A291D09008F9DD2 /* Preview Assets.xcassets */; };
 		6EE24C762A291D23008F9DD2 /* ShopAndSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE24C752A291D23008F9DD2 /* ShopAndSaveView.swift */; };
+		6EE24C7C2A292452008F9DD2 /* ShopAndSaveItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE24C7B2A292452008F9DD2 /* ShopAndSaveItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		6EE24C6B2A291D09008F9DD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EE24C6E2A291D09008F9DD2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6EE24C752A291D23008F9DD2 /* ShopAndSaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopAndSaveView.swift; sourceTree = "<group>"; };
+		6EE24C7B2A292452008F9DD2 /* ShopAndSaveItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopAndSaveItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +53,6 @@
 		6EE24C662A291D07008F9DD2 /* ShopAndSave */ = {
 			isa = PBXGroup;
 			children = (
-				6EE24C792A291D6D008F9DD2 /* Helpers */,
 				6EE24C672A291D07008F9DD2 /* ShopAndSaveApp.swift */,
 				6EE24C782A291D5C008F9DD2 /* Models */,
 				6EE24C772A291D50008F9DD2 /* Views */,
@@ -72,6 +73,7 @@
 		6EE24C772A291D50008F9DD2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6EE24C792A291D6D008F9DD2 /* Helpers */,
 				6EE24C752A291D23008F9DD2 /* ShopAndSaveView.swift */,
 			);
 			path = Views;
@@ -87,6 +89,7 @@
 		6EE24C792A291D6D008F9DD2 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6EE24C7B2A292452008F9DD2 /* ShopAndSaveItemView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			files = (
 				6EE24C682A291D07008F9DD2 /* ShopAndSaveApp.swift in Sources */,
 				6EE24C762A291D23008F9DD2 /* ShopAndSaveView.swift in Sources */,
+				6EE24C7C2A292452008F9DD2 /* ShopAndSaveItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
