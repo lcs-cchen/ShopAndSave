@@ -42,7 +42,7 @@ struct ShopAndSaveView: View {
                 
                 
                 .font(.caption)
-                ShopAndSaveListView()
+                ShopAndSaveListView(filteredOn: searchText)
                 ZStack{
                     Rectangle()
                         .frame(width:360, height: 100)
