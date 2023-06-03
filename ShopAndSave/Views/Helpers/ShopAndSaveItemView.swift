@@ -15,15 +15,19 @@ struct ShopAndSaveItemView: View {
     let price: Int
     
     var body: some View {
-        HStack(spacing: 40){
+        HStack(){
             Text(name)
-                
-            Spacer()
+            Spacer(minLength: 130)
+            
+            
+            
+           
             
             Text("\(quantity)")
-                
             
+            Spacer(minLength: 50)
             Text("$\(price)")
+            Spacer()
         }
         .font(.title)
     }

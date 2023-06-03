@@ -24,6 +24,7 @@ struct ShopAndSaveView: View {
                     
                     TextField("Add Budget . . .", text: $initialBudget)
                         .textFieldStyle(.roundedBorder)
+                        .font(.body)
                        
                 }
                 .padding(.top)
@@ -31,37 +32,50 @@ struct ShopAndSaveView: View {
                     Text("Groceries")
                         .font(.title)
                     
-                    TextField("Search . . .                      \(Image(systemName: "magnifyingglass"))", text: $searchBar)
+                    TextField("Search . . .                       \(Image(systemName: "magnifyingglass"))", text: $searchBar)
                         .textFieldStyle(.roundedBorder)
+                        .font(.body)
                     
                 }
-                HStack{
-                    Spacer()
-                    Text("Items")
-                    Spacer(minLength: 100)
-                    Text("Quantity")
-                    Spacer()
-                    Text("Price")
-                    Spacer()
-                }
+                .padding(.bottom,-20)
+               
                 
-                .padding(.bottom,-40)
+                
                 .font(.caption)
                 List{
-                    
-                    ShopAndSaveItemView(name: "Apple", quantity: 2, price: 2)
+                    Section{
                         
-                    ShopAndSaveItemView(name: "Apple", quantity: 2, price: 2)
-                    ShopAndSaveItemView(name: "Apple", quantity: 2, price: 2)
-                    ShopAndSaveItemView(name: "Apple", quantity: 2, price: 2)
-                    
+                        
+                        ShopAndSaveItemView(name: "Apple", quantity: 2, price: 2)
+                        ShopAndSaveItemView(name: "Apple", quantity: 2, price: 2)
+                        ShopAndSaveItemView(name: "Apple", quantity: 2, price: 2)
+                        
+                    } header: {
+                        HStack{
+                            Spacer()
+                            Text("Items")
+                            Spacer(minLength: 120)
+                            Text("Quantity")
+                            Spacer(minLength: 30)
+                            Text("Price")
+                            Spacer()
+                            
+                        }
+                    }
                 }
                 .cornerRadius(20)
+                .listStyle(.plain)
                 ZStack{
                     Rectangle()
                         .frame(width:360, height: 100)
                         .cornerRadius(20)
                         .foregroundColor(.gray)
+                    VStack{
+                        Text("Budget left: $40")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                            .bold()
+                    }
                 }
                 
                 Spacer()
