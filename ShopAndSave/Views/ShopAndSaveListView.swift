@@ -10,7 +10,7 @@ import SwiftUI
 struct ShopAndSaveListView: View {
     @Environment(\.blackbirdDatabase) var db:Blackbird.Database?
     
-  
+    @BlackbirdLiveModels var todoItems: Blackbird.LiveResults<TodoItem>
     
     var body: some View {
         List{
