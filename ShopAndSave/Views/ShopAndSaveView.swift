@@ -17,6 +17,8 @@ struct ShopAndSaveView: View {
     
     @Environment(\.blackbirdDatabase) var db:Blackbird.Database?
     
+    @BlackbirdLiveModels var ShopAndSaveItems: Blackbird.LiveResults<ShopAndSaveItem>
+    
     @BlackbirdLiveModels({db in
         try await ShopAndSaveItem.read(from: db)
     }) var ShopAndSaves
@@ -74,7 +76,7 @@ struct ShopAndSaveView: View {
                                 }
                                 
                             }
-                            
+                            .onDelete(perform: removeRows)
                         } header: {
                             HStack{
                                 
@@ -124,11 +126,34 @@ struct ShopAndSaveView: View {
         }
         
     }
+    init(filteredOn searchText: String){
+        _ShopAndSaveItems = BlackbirdLiveModels({ db in
+            try await ShopAndSaveItem.read(from: db,
+                                    sqlWhere: "name LIKE ?", "%\(searchText)%")
+        })
+    }
+    func removeRows(at offsets: IndexSet){
+        
+        Task{
+            try await db!.transaction{ core in
+                var idlist = ""
+                for offset in offsets{
+                    idlist += "\(ShopAndSaveItems.results[offset].id),"
+                }
+                print(idlist)
+                idlist.removeLast()
+                print(idlist)
+                
+                try core.query("DELETE FROM ShopAndSaveItem Where id IN (?)",idlist)
+            }
+        }
+    }
+
 }
 
 struct ShopAndSaveView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopAndSaveView()
+        ShopAndSaveView(filteredOn: "Banana")
             .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }
