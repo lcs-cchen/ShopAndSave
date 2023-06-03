@@ -16,25 +16,32 @@ struct ShopAndSaveItemView: View {
     
     var body: some View {
         HStack(){
+
             Text(name)
-            Spacer(minLength: 130)
+                .font(.title3)
+                .padding(.leading, 10)
+                .minimumScaleFactor(0.5)
+                
+            Spacer()
             
             
             
            
             
             Text("\(quantity)")
-            
-            Spacer(minLength: 50)
-            Text("$\(price)")
+                .font(.title3)
             Spacer()
+            Text("$\(price)")
+                .font(.title3)
+                .padding(.trailing, 10)
+            
         }
-        .font(.title)
+        
     }
 }
 
 struct ShopAndSaveItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopAndSaveItemView(name: "Apple", quantity: 2, price: 2)
+        ShopAndSaveItemView(name: "Banana", quantity: 2, price: 2)
     }
 }
