@@ -47,6 +47,7 @@ INSERT INTO ShopAndSaveItem(
 name,
 quantity,
 price
+
 )
 VALUES (
 (?),
@@ -56,7 +57,8 @@ VALUES (
 """,
                 name,
                 quantity,
-                price)
+                price
+                )
             }
         }
     }

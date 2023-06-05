@@ -63,7 +63,7 @@ struct ShopAndSaveListView: View {
     init(filteredOn searchText: String){
         _ShopAndSaveItems = BlackbirdLiveModels({ db in
             try await ShopAndSaveItem.read(from: db,
-                                    sqlWhere: "name LIKE ?", "%\(searchText)%")
+            sqlWhere: "name LIKE ?", "%\(searchText)%")
         })
     }
     func removeRows(at offsets: IndexSet){

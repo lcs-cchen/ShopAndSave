@@ -13,6 +13,11 @@ struct ShopAndSaveItemView: View {
     let name: String
     let quantity: Int
     let price: Int
+   
+    
+    var totalPrice: Int {
+        return quantity * price
+    }
     
     var body: some View {
         HStack(){
@@ -25,7 +30,7 @@ struct ShopAndSaveItemView: View {
             Spacer()
             
             
-            
+         
            
             
             Text("\(quantity)")
