@@ -93,6 +93,7 @@ struct ShopAndSaveView: View {
                         
                     }
                 }
+                
                 .cornerRadius(20)
                 .listStyle(.plain)
                 ZStack{
@@ -153,7 +154,7 @@ struct ShopAndSaveView: View {
 
 struct ShopAndSaveView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopAndSaveView(filteredOn: "Banana")
+        ShopAndSaveView(filteredOn: "Bananas")
             .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }
