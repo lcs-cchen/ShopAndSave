@@ -17,9 +17,25 @@ struct ShopAndSaveView: View {
     
     @State var showingAddItemView = false
     
+    @BlackbirdLiveModels({db in
+        try await ShopAndSaveItem.read(from: db)
+    }) var ShopAndSave
+    //"select sum(?) FROM ShopAndSaveItem", "\(totalPrice)"
+    
+    var initialBudgetAsInt: Int {
+        guard let unwrapped = Int(initialBudget) else {
+            return 0
+        }
+        
+        return unwrapped
+    }
     
     
-
+    var budgetLeft: Int{
+        
+        let BudgetLeft = initialBudgetAsInt-calculateTotal()
+        return BudgetLeft
+    }
     
     var body: some View {
         NavigationView{
@@ -36,7 +52,7 @@ struct ShopAndSaveView: View {
                             .font(.body)
                         
                     }
-                    .padding(.top)
+                    
                     HStack(spacing: 20){
                         Text("Groceries")
                             .font(.title)
@@ -59,7 +75,7 @@ struct ShopAndSaveView: View {
                         .cornerRadius(20)
                         .foregroundColor(.gray)
                     VStack{
-                        Text("Budget left: $40")
+                        Text("Budget left: \(budgetLeft)")
                             .font(.largeTitle)
                             .foregroundColor(.white)
                             .bold()
@@ -85,7 +101,14 @@ struct ShopAndSaveView: View {
         
     }
  
-
+    func calculateTotal() -> Int {
+        var total = 0
+        for addPrices in ShopAndSave.results {
+            total += addPrices.totalPrice
+        }
+        return total
+    }
+    
 
 }
 

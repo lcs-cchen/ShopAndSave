@@ -13,7 +13,7 @@ struct ShopAndSaveListView: View {
     
     @BlackbirdLiveModels var ShopAndSaveItems: Blackbird.LiveResults<ShopAndSaveItem>
     
-
+   
     
     var body: some View {
         List{
@@ -21,7 +21,10 @@ struct ShopAndSaveListView: View {
                 Section{
                     ForEach(ShopAndSaveItems.results){ currentItem in
                         Label(title: {
-                            ShopAndSaveItemView(name: currentItem.name, quantity: currentItem.quantity, price: currentItem.price)
+                            ShopAndSaveItemView(name: currentItem.name, quantity: currentItem.quantity, price: currentItem.price,totalPrice: currentItem.totalPrice)
+                         
+                           
+                            
                         }, icon: {
                             if currentItem.ticked == true {
                                 Image (systemName: "checkmark.circle")
@@ -66,6 +69,14 @@ struct ShopAndSaveListView: View {
                                     sqlWhere: "name LIKE ?","%\(searchText)%")
         })
     }
+    func calculateTotal() -> Int {
+        var total = 0
+        for addPrices in ShopAndSaveItems.results {
+            total += addPrices.totalPrice
+        }
+        return total
+    }
+    
     func removeRows(at offsets: IndexSet){
         
         Task{
@@ -86,7 +97,7 @@ struct ShopAndSaveListView: View {
 
 struct ShopAndSaveListView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopAndSaveListView(filteredOn: "grape")
+        ShopAndSaveListView(filteredOn: "")
             .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }
