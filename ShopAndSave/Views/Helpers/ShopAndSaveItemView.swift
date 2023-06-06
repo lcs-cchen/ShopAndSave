@@ -15,10 +15,7 @@ struct ShopAndSaveItemView: View {
     let price: Int
    
     
-    var totalPrice: Int {
-        return quantity * price
-    }
-    
+   
     var body: some View {
         HStack(){
 

@@ -12,6 +12,6 @@ struct ShopAndSaveItem: BlackbirdModel {
     @BlackbirdColumn var name: String
     @BlackbirdColumn var quantity: Int
     @BlackbirdColumn var price: Int
-    @BlackbirdColumn var totalPrice: Int
     @BlackbirdColumn var ticked: Bool
+    @BlackbirdColumn var totalPrice: Int
 }

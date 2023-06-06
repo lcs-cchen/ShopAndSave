@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ShopAndSaveView: View {
     
+    @Environment(\.blackbirdDatabase) var db:Blackbird.Database?
+    
     @State var initialBudget = ""
     
     @State var searchText = ""
     
     @State var showingAddItemView = false
     
-    @Environment(\.blackbirdDatabase) var db:Blackbird.Database?
+    
     
 
     
@@ -39,17 +41,16 @@ struct ShopAndSaveView: View {
                         Text("Groceries")
                             .font(.title)
                         
-                        TextField("Search . . .                       \(Image(systemName: "magnifyingglass"))", text: $searchText)
-                            .textFieldStyle(.roundedBorder)
-                            .font(.body)
-                        
                     }
                     .padding(.bottom,-20)
                     
                 
                 
                 .font(.caption)
-                ShopAndSaveListView(filteredOn: "\(searchText)")
+                ShopAndSaveListView(filteredOn: searchText)
+                .searchable(text: $searchText)
+                
+    
                 .cornerRadius(20)
                 .listStyle(.plain)
                 ZStack{

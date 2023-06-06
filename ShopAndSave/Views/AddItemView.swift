@@ -15,6 +15,26 @@ struct AddItemView: View {
     @State var quantity = ""
     @State var price = ""
     
+    var quantityAsInt: Int {
+        guard let unwrapped = Int(quantity) else {
+            return 0
+        }
+        
+        return unwrapped
+    }
+    var priceAsInt: Int {
+        guard let unwrapped = Int(price) else {
+            return 0
+        }
+        
+        return unwrapped
+    }
+    
+    var totalPrice: Int{
+        quantityAsInt * priceAsInt
+    }
+    
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -46,18 +66,23 @@ struct AddItemView: View {
 INSERT INTO ShopAndSaveItem(
 name,
 quantity,
-price
+price,
+totalPrice
 
 )
 VALUES (
-(?),
-(?),
-(?)
+?,
+?,
+?,
+?
 )
 """,
                 name,
                 quantity,
-                price
+                price,
+                totalPrice
+              
+                               
                 )
             }
         }

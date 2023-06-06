@@ -13,15 +13,13 @@ struct ShopAndSaveListView: View {
     
     @BlackbirdLiveModels var ShopAndSaveItems: Blackbird.LiveResults<ShopAndSaveItem>
     
-    @BlackbirdLiveModels({db in
-        try await ShopAndSaveItem.read(from: db)
-    }) var ShopAndSaves
+
     
     var body: some View {
         List{
             
                 Section{
-                    ForEach(ShopAndSaves.results){ currentItem in
+                    ForEach(ShopAndSaveItems.results){ currentItem in
                         Label(title: {
                             ShopAndSaveItemView(name: currentItem.name, quantity: currentItem.quantity, price: currentItem.price)
                         }, icon: {
@@ -60,10 +58,12 @@ struct ShopAndSaveListView: View {
             }
         }
     }
+
+    // MARK: Initializers
     init(filteredOn searchText: String){
         _ShopAndSaveItems = BlackbirdLiveModels({ db in
             try await ShopAndSaveItem.read(from: db,
-            sqlWhere: "name LIKE ?", "%\(searchText)%")
+                                    sqlWhere: "name LIKE ?","%\(searchText)%")
         })
     }
     func removeRows(at offsets: IndexSet){
@@ -86,6 +86,7 @@ struct ShopAndSaveListView: View {
 
 struct ShopAndSaveListView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopAndSaveListView(filteredOn: "Banana")
+        ShopAndSaveListView(filteredOn: "grape")
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }
