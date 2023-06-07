@@ -21,8 +21,8 @@ struct ShopAndSaveItemView: View {
         HStack(){
 
             Text(name)
-                .font(.title3)
                 .padding(.leading, 10)
+                
                 Spacer()
                 
                 
@@ -33,23 +33,26 @@ struct ShopAndSaveItemView: View {
            
             
             Text("\(quantity)")
-                .font(.title3)
-                .padding(.trailing,15)
+                .frame(width: 20)
                 .minimumScaleFactor(0.6)
+                .padding(.trailing,20)
             Text("$\(price)")
-                .font(.title3)
+                .frame(width: 30)
                 .minimumScaleFactor(0.6)
+                .padding(.trailing,20)
                 
-                .padding(.trailing,15)
+            
             Text("$\(totalPrice)")
-                .font(.title3)
-                .padding(.trailing, 15)
+                .frame(width: 30)
                 .minimumScaleFactor(0.6)
+                .padding(.trailing, 10)
             
         }
+        .font(Font.custom("Futura", size: 20 ))
+        .multilineTextAlignment(.center)
         .lineLimit(1)
         .minimumScaleFactor(0.6)
-        
+        .font(.title3)
     }
 }
 

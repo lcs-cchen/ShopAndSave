@@ -17,9 +17,10 @@ struct ShopAndSaveView: View {
     
     @State var showingAddItemView = false
     
+    
     @BlackbirdLiveModels({db in
         try await ShopAndSaveItem.read(from: db)
-    }) var ShopAndSave
+    }) var ShopAndSaveItems
     //"select sum(?) FROM ShopAndSaveItem", "\(totalPrice)"
     
     var initialBudgetAsInt: Int {
@@ -39,10 +40,11 @@ struct ShopAndSaveView: View {
     
     var body: some View {
         NavigationView{
-            VStack(alignment: .leading, spacing: 20.0){
+            VStack(alignment: .leading, spacing: 15.0){
                 
                     HStack{
                         Text("Overall Budget :")
+                            .font(Font.custom("Futura", size: 20 ))
                             .font(.title2)
                         
                         
@@ -55,7 +57,9 @@ struct ShopAndSaveView: View {
                     
                     HStack(spacing: 20){
                         Text("Groceries")
-                            .font(.title)
+                            .font(Font.custom("Futura", size: 30 ))
+                            
+                            .bold()
                         
                     }
                     .padding(.bottom,-20)
@@ -73,19 +77,25 @@ struct ShopAndSaveView: View {
                     Rectangle()
                         .frame(width:360, height: 100)
                         .cornerRadius(20)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color("Color"))
                     VStack{
                         Text("Budget left: \(budgetLeft)")
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
+                            .font(Font.custom("Futura", size: 40 ))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
                             .bold()
                     }
                 }
                 
                 Spacer()
             }
+            
             .padding(.horizontal,20)
-            .navigationTitle("Shopping Calculator")
+            .navigationTitle(Text("Shopping Calculator"))
+            
+           
+            
+            
             .toolbar{
                 ToolbarItem(placement: .primaryAction){
                     Button(action: {
@@ -103,8 +113,10 @@ struct ShopAndSaveView: View {
  
     func calculateTotal() -> Int {
         var total = 0
-        for addPrices in ShopAndSave.results {
-            total += addPrices.totalPrice
+        for currentItem in ShopAndSaveItems.results {
+            if currentItem.ticked {
+                total += currentItem.totalPrice
+            }
         }
         return total
     }
