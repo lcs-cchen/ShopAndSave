@@ -48,15 +48,20 @@ struct ShopAndSaveListView: View {
                     HStack{
                         
                         Text("Items")
-                            .padding(.leading,50)
-                        Spacer()
+                            .padding(.leading,47)
+                            Spacer()
+                        
                         Text("Quantity")
-                            .padding(.leading, 40)
-                        Spacer()
+                            
+                        
+                        Text("Unit Price")
+                        
                         Text("Price")
+                            .padding(.trailing,5)
                             
                         
                     }
+                    .font(.caption)
                 
             }
         }
