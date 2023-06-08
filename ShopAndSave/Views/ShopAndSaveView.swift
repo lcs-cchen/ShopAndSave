@@ -79,7 +79,7 @@ struct ShopAndSaveView: View {
                         .cornerRadius(20)
                         .foregroundColor(Color("Color"))
                     VStack{
-                        Text("Budget left: \(budgetLeft)")
+                        Text("Budget lef\(budgetLeft)")
                             .font(Font.custom("Futura", size: 40 ))
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)

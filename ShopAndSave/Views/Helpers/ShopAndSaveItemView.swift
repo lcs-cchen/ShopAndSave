@@ -33,19 +33,19 @@ struct ShopAndSaveItemView: View {
            
             
             Text("\(quantity)")
-                .frame(width: 20)
+                .frame(width: 25)
                 .minimumScaleFactor(0.6)
-                .padding(.trailing,20)
+                .padding(.trailing,15)
             Text("$\(price)")
-                .frame(width: 30)
+                .frame(width: 35)
                 .minimumScaleFactor(0.6)
-                .padding(.trailing,20)
+                .padding(.trailing,15)
                 
             
             Text("$\(totalPrice)")
-                .frame(width: 30)
+                .frame(width: 35)
                 .minimumScaleFactor(0.6)
-                .padding(.trailing, 10)
+                .padding(.trailing, 5)
             
         }
         .font(Font.custom("Futura", size: 20 ))
