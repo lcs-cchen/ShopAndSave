@@ -21,7 +21,7 @@ struct ShopAndSaveView: View {
     @BlackbirdLiveModels({db in
         try await ShopAndSaveItem.read(from: db)
     }) var ShopAndSaveItems
-    //"select sum(?) FROM ShopAndSaveItem", "\(totalPrice)"
+    
     
     var initialBudgetAsInt: Int {
         guard let unwrapped = Int(initialBudget) else {
@@ -79,7 +79,7 @@ struct ShopAndSaveView: View {
                         .cornerRadius(20)
                         .foregroundColor(Color("Color"))
                     VStack{
-                        Text("Budget lef\(budgetLeft)")
+                        Text("Budget left : \(budgetLeft)")
                             .font(Font.custom("Futura", size: 40 ))
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)
